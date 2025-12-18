@@ -1,4 +1,4 @@
-# Wooting D0DA Protocol
+# Wooting Wootility Protocol
 
 ## Introduction
 
@@ -11,7 +11,7 @@ describes what the packets do and in what order they should be sent.
 ## Features
 
 - Technical documentation
-- Command line interface (d0da-cli) for sending packets to the keyboard
+- Command line interface (libwootility-cli) for sending packets to the keyboard
 - Unit tests
 
 ## Limitations
@@ -24,5 +24,5 @@ describes what the packets do and in what order they should be sent.
 Run:
 
 ```bash
-pipx install d0da
+pipx install libwootility
 ```

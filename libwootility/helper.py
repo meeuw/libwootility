@@ -1,20 +1,6 @@
 """
-Helper functions for D0DA protocol
+Helper functions for D1DA protocol
 """
-
-
-def create_packets(payload, packet_size, packets):
-    """
-    Create (fragment) packets from payload of packet_size
-    """
-    total_size = packet_size * packets
-    for i in range(0, total_size, packet_size):
-        if i < total_size:
-            buf = payload[i : i + packet_size]
-        else:
-            buf = b""
-
-        yield buf + b"\x00" * (packet_size - len(buf))
 
 
 def chunk_bytes(value, bit_length):

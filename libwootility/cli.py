@@ -1,8 +1,8 @@
 import click
-import d0da.device_linux as d0da_device
-import d0da.helper
-import d0da.d0da_feature
-import d0da.d0da_report
+import libwootility.device_linux as libwootility_device
+import libwootility.helper
+import libwootility.libwootility_feature
+import libwootility.libwootility_report
 
 
 @click.group()
@@ -12,7 +12,7 @@ def main():
 
 @main.command()
 def list_devices():
-    for device in d0da_device.list_devices():
+    for device in libwootility_device.list_devices():
         click.echo(device)
 
 
@@ -20,8 +20,8 @@ def list_devices():
 @click.option("--device", required=True)
 @click.option("--report", required=True)
 @click.option("--value", required=True, multiple=True)
-def d0da_report(device, report, value):
-    device = d0da_device.get_device(device)
+def libwootility_report(device, report, value):
+    device = libwootility_device.get_device(device)
 
     pass_values = []
     for val in value:
@@ -44,7 +44,7 @@ def d0da_report(device, report, value):
             pass_values.append(int(val))
 
     try:
-        payload = getattr(d0da.d0da_report, report)(*pass_values)
+        payload = getattr(libwootility.libwootility_report, report)(*pass_values)
     except AttributeError:
         payload = None
 
@@ -55,13 +55,13 @@ def d0da_report(device, report, value):
 @click.option("--device", required=True)
 @click.option("--feature", required=True)
 @click.option("--value", multiple=True, type=int)
-def d0da_feature(device, feature, value):
-    device = d0da_device.get_device(device)
+def libwootility_feature(device, feature, value):
+    device = libwootility_device.get_device(device)
 
     payload = None
 
     try:
-        payload = getattr(d0da.d0da_feature, feature)(*value)
+        payload = getattr(libwootility.libwootility_feature, feature)(*value)
     except AttributeError:
         payload = None
 

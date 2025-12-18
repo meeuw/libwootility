@@ -1,5 +1,5 @@
-import d0da.d0da_report
-import d0da.device_linux as d0da_device
+import libwootility.libwootility_report
+import libwootility.device_linux as libwootility_device
 import time
 import colorsys
 import hsluv
@@ -23,15 +23,19 @@ def set_hue(hue):
             (int(c[0] * 255), int(c[1] * 255), int(c[2] * 255)),
         )
 
-    payload = d0da.d0da_report.set_upper_rows_rgb(values, values, values)
+    payload = libwootility.libwootility_report.set_upper_rows_rgb(
+        values, values, values
+    )
     device.send_buffer(payload)
 
-    payload = d0da.d0da_report.set_lower_rows_rgb(values, values, values)
+    payload = libwootility.libwootility_report.set_lower_rows_rgb(
+        values, values, values
+    )
     device.send_buffer(payload)
 
 
 if __name__ == "__main__":
-    device = d0da_device.get_device(sys.argv[1])
+    device = libwootility_device.get_device(sys.argv[1])
 
     localtime = time.localtime()
     hue = (localtime.tm_hour * 60 + localtime.tm_min) / (24 * 60)

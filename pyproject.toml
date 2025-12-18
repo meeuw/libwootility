@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "d0da"
-version = "0.10.0"
-description = "Wooting D0DA protocol"
+name = "libwootility"
+version = "1.0.0"
+description = "Wooting wootility protocol"
 authors = ["Dick Marinus"]
 readme = "README.md"
-packages = [ { include = "d0da" } ]
+packages = [ { include = "libwootility" } ]
 license = "GPL-3.0"
 
 [tool.poetry.dependencies]
@@ -23,7 +23,7 @@ pytest = "^7.3.1"
 linux = ["pyudev", "ioctl-opt"]
 
 [tool.poetry.scripts]
-d0da-cli = 'd0da.cli:main'
+libwootility-cli = 'libwootility.cli:main'
 
 [build-system]
 requires = ["poetry-core"]

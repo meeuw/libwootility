@@ -1,4 +1,4 @@
-D0DA = b"\xd0\xda"
+D1DA = b"\xd1\xda"
 
 
 PING = 0x00
@@ -88,249 +88,249 @@ HAS_RESPONSE = [
 
 
 def ping():
-    return D0DA + bytes((PING,))
+    return D1DA + bytes((PING,))
 
 
 def get_version():
-    return D0DA + bytes((GET_VERSION,))
+    return D1DA + bytes((GET_VERSION,))
 
 
 def reset_to_bootloader():
-    return D0DA + bytes((RESET_TO_BOOTLOADER,))
+    return D1DA + bytes((RESET_TO_BOOTLOADER,))
 
 
 def get_serial():
-    return D0DA + bytes((GET_SERIAL,))
+    return D1DA + bytes((GET_SERIAL,))
 
 
 def get_rgb_profile_count():
-    return D0DA + bytes((GET_RGB_PROFILE_COUNT,))
+    return D1DA + bytes((GET_RGB_PROFILE_COUNT,))
 
 
 def removed_get_current_rgb_profile_index():
-    return D0DA + bytes((REMOVED_GET_CURRENT_RGB_PROFILE_INDEX,))
+    return D1DA + bytes((REMOVED_GET_CURRENT_RGB_PROFILE_INDEX,))
 
 
 def removed_get_rgb_main_profile():
-    return D0DA + bytes((REMOVED_GET_RGB_MAIN_PROFILE,))
+    return D1DA + bytes((REMOVED_GET_RGB_MAIN_PROFILE,))
 
 
 def reload_profile0(index):
-    return D0DA + bytes((RELOAD_PROFILE0, index))
+    return D1DA + bytes((RELOAD_PROFILE0, index))
 
 
 def save_rgb_profile():
-    return D0DA + bytes((SAVE_RGB_PROFILE,))
+    return D1DA + bytes((SAVE_RGB_PROFILE,))
 
 
 def get_digital_profiles_count():
-    return D0DA + bytes((GET_DIGITAL_PROFILES_COUNT,))
+    return D1DA + bytes((GET_DIGITAL_PROFILES_COUNT,))
 
 
 def get_analog_profiles_count():
-    return D0DA + bytes((GET_ANALOG_PROFILES_COUNT,))
+    return D1DA + bytes((GET_ANALOG_PROFILES_COUNT,))
 
 
 def get_current_keyboard_profile_index():
-    return D0DA + bytes((GET_CURRENT_KEYBOARD_PROFILE_INDEX,))
+    return D1DA + bytes((GET_CURRENT_KEYBOARD_PROFILE_INDEX,))
 
 
 def get_digital_profile():
-    return D0DA + bytes((GET_DIGITAL_PROFILE,))
+    return D1DA + bytes((GET_DIGITAL_PROFILE,))
 
 
 def get_analog_profile_main_part():
-    return D0DA + bytes((GET_ANALOG_PROFILE_MAIN_PART,))
+    return D1DA + bytes((GET_ANALOG_PROFILE_MAIN_PART,))
 
 
 def get_analog_profile_curve_change_map_part1():
-    return D0DA + bytes((GET_ANALOG_PROFILE_CURVE_CHANGE_MAP_PART1,))
+    return D1DA + bytes((GET_ANALOG_PROFILE_CURVE_CHANGE_MAP_PART1,))
 
 
 def get_analog_profile_curve_change_map_part2():
-    return D0DA + bytes((GET_ANALOG_PROFILE_CURVE_CHANGE_MAP_PART2,))
+    return D1DA + bytes((GET_ANALOG_PROFILE_CURVE_CHANGE_MAP_PART2,))
 
 
 def get_number_of_keys():
-    return D0DA + bytes((GET_NUMBER_OF_KEYS,))
+    return D1DA + bytes((GET_NUMBER_OF_KEYS,))
 
 
 def get_main_mapping_profile():
-    return D0DA + bytes((GET_MAIN_MAPPING_PROFILE,))
+    return D1DA + bytes((GET_MAIN_MAPPING_PROFILE,))
 
 
 def get_function_mapping_profile():
-    return D0DA + bytes((GET_FUNCTION_MAPPING_PROFILE,))
+    return D1DA + bytes((GET_FUNCTION_MAPPING_PROFILE,))
 
 
 def get_device_config():
-    return D0DA + bytes((GET_DEVICE_CONFIG,))
+    return D1DA + bytes((GET_DEVICE_CONFIG,))
 
 
 def get_analog_values():
-    return D0DA + bytes((GET_ANALOG_VALUES,))
+    return D1DA + bytes((GET_ANALOG_VALUES,))
 
 
 def keys_off():
-    return D0DA + bytes((KEYS_OFF,))
+    return D1DA + bytes((KEYS_OFF,))
 
 
 def keys_on():
-    return D0DA + bytes((KEYS_ON,))
+    return D1DA + bytes((KEYS_ON,))
 
 
 def activate_profile(index):
-    return D0DA + bytes((ACTIVATE_PROFILE, index))
+    return D1DA + bytes((ACTIVATE_PROFILE, index))
 
 
 def get_dks_profile():
-    return D0DA + bytes((GET_DKS_PROFILE,))
+    return D1DA + bytes((GET_DKS_PROFILE,))
 
 
 def do_soft_reset():
-    return D0DA + bytes((DO_SOFT_RESET,))
+    return D1DA + bytes((DO_SOFT_RESET,))
 
 
 def removed_get_rgb_colors_part1():
-    return D0DA + bytes((REMOVED_GET_RGB_COLORS_PART1,))
+    return D1DA + bytes((REMOVED_GET_RGB_COLORS_PART1,))
 
 
 def removed_get_rgb_colors_part2():
-    return D0DA + bytes((REMOVED_GET_RGB_COLORS_PART2,))
+    return D1DA + bytes((REMOVED_GET_RGB_COLORS_PART2,))
 
 
 def removed_get_rgb_effects():
-    return D0DA + bytes((REMOVED_GET_RGB_EFFECTS,))
+    return D1DA + bytes((REMOVED_GET_RGB_EFFECTS,))
 
 
 def refresh_rgb_colors(index):
-    return D0DA + bytes((REFRESH_RGB_COLORS, index))
+    return D1DA + bytes((REFRESH_RGB_COLORS, index))
 
 
 def woot_dev_single_color(row, column, red, green, blue):
     id = (row << 5) | column
-    return D0DA + bytes((WOOT_DEV_SINGLE_COLOR, blue, green, red, id))
+    return D1DA + bytes((WOOT_DEV_SINGLE_COLOR, blue, green, red, id))
 
 
 def woot_dev_reset_color(row, column):
     id = (row << 5) | column
-    return D0DA + bytes((WOOT_DEV_RESET_COLOR, id))
+    return D1DA + bytes((WOOT_DEV_RESET_COLOR, id))
 
 
 def woot_dev_reset_all():
     """
     Reset keyboard to wootility mode (after woot_dev_init)
     """
-    return D0DA + bytes((WOOT_DEV_RESET_ALL,))
+    return D1DA + bytes((WOOT_DEV_RESET_ALL,))
 
 
 def woot_dev_init():
     """
     Initialize mode to manually set the RGB array using
-    d0da.d0da_report.rgb_array_update_keyboard()
+    libwootility.libwootility_report.rgb_array_update_keyboard()
     """
-    return D0DA + bytes((WOOT_DEV_INIT,))
+    return D1DA + bytes((WOOT_DEV_INIT,))
 
 
 def removed_get_rgb_profile_base():
-    return D0DA + bytes((REMOVED_GET_RGB_PROFILE_BASE,))
+    return D1DA + bytes((REMOVED_GET_RGB_PROFILE_BASE,))
 
 
 def get_rgb_profile_color_part1():
-    return D0DA + bytes((GET_RGB_PROFILE_COLOR_PART1,))
+    return D1DA + bytes((GET_RGB_PROFILE_COLOR_PART1,))
 
 
 def get_rgb_profile_color_part2():
-    return D0DA + bytes((GET_RGB_PROFILE_COLOR_PART2,))
+    return D1DA + bytes((GET_RGB_PROFILE_COLOR_PART2,))
 
 
 def removed_get_rgb_profile_effect():
-    return D0DA + bytes((REMOVED_GET_RGB_PROFILE_EFFECT,))
+    return D1DA + bytes((REMOVED_GET_RGB_PROFILE_EFFECT,))
 
 
 def reload_profile():
-    return D0DA + bytes((RELOAD_PROFILE,))
+    return D1DA + bytes((RELOAD_PROFILE,))
 
 
 def get_keyboard_profile():
-    return D0DA + bytes((GET_KEYBOARD_PROFILE,))
+    return D1DA + bytes((GET_KEYBOARD_PROFILE,))
 
 
 def get_gamepad_mapping():
-    return D0DA + bytes((GET_GAMEPAD_MAPPING,))
+    return D1DA + bytes((GET_GAMEPAD_MAPPING,))
 
 
 def get_gamepad_profile():
-    return D0DA + bytes((GET_GAMEPAD_PROFILE,))
+    return D1DA + bytes((GET_GAMEPAD_PROFILE,))
 
 
 def save_keyboard_profile():
-    return D0DA + bytes((SAVE_KEYBOARD_PROFILE,))
+    return D1DA + bytes((SAVE_KEYBOARD_PROFILE,))
 
 
 def reset_flash():
-    return D0DA + bytes((RESET_FLASH,))
+    return D1DA + bytes((RESET_FLASH,))
 
 
 def set_raw_scanning():
-    return D0DA + bytes((SET_RAW_SCANNING,))
+    return D1DA + bytes((SET_RAW_SCANNING,))
 
 
 def start_xinput_detection():
-    return D0DA + bytes((START_XINPUT_DETECTION,))
+    return D1DA + bytes((START_XINPUT_DETECTION,))
 
 
 def stop_xinput_detection():
-    return D0DA + bytes((STOP_XINPUT_DETECTION,))
+    return D1DA + bytes((STOP_XINPUT_DETECTION,))
 
 
 def save_dks_profile():
-    return D0DA + bytes((SAVE_DKS_PROFILE,))
+    return D1DA + bytes((SAVE_DKS_PROFILE,))
 
 
 def get_mapping_profile():
-    return D0DA + bytes((GET_MAPPING_PROFILE,))
+    return D1DA + bytes((GET_MAPPING_PROFILE,))
 
 
 def get_actuation_profile():
-    return D0DA + bytes((GET_ACTUATION_PROFILE,))
+    return D1DA + bytes((GET_ACTUATION_PROFILE,))
 
 
 def get_rgb_profile_core():
-    return D0DA + bytes((GET_RGB_PROFILE_CORE,))
+    return D1DA + bytes((GET_RGB_PROFILE_CORE,))
 
 
 def get_global_settings():
-    return D0DA + bytes((GET_GLOBAL_SETTINGS,))
+    return D1DA + bytes((GET_GLOBAL_SETTINGS,))
 
 
 def get_akc_profile():
-    return D0DA + bytes((GET_AKC_PROFILE,))
+    return D1DA + bytes((GET_AKC_PROFILE,))
 
 
 def save_akc_profile():
-    return D0DA + bytes((SAVE_AKC_PROFILE,))
+    return D1DA + bytes((SAVE_AKC_PROFILE,))
 
 
 def get_rapid_trigger_profile():
-    return D0DA + bytes((GET_RAPID_TRIGGER_PROFILE,))
+    return D1DA + bytes((GET_RAPID_TRIGGER_PROFILE,))
 
 
 def get_profile_metadata():
-    return D0DA + bytes((GET_PROFILE_METADATA,))
+    return D1DA + bytes((GET_PROFILE_METADATA,))
 
 
 def is_flash_chip_connected():
-    return D0DA + bytes((IS_FLASH_CHIP_CONNECTED,))
+    return D1DA + bytes((IS_FLASH_CHIP_CONNECTED,))
 
 
 def get_rgb_layer():
-    return D0DA + bytes((GET_RGB_LAYER,))
+    return D1DA + bytes((GET_RGB_LAYER,))
 
 
 def get_flash_stats():
-    return D0DA + bytes((GET_FLASH_STATS,))
+    return D1DA + bytes((GET_FLASH_STATS,))
 
 
 def get_rgb_bins():
-    return D0DA + bytes((GET_RGB_BINS,))
+    return D1DA + bytes((GET_RGB_BINS,))

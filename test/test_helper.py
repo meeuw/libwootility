@@ -1,41 +1,8 @@
 """
-Tests for d0da.helper functions
+Tests for libwootility.helper functions
 """
 import pytest
-import d0da.helper
-
-
-def test_create_packets():
-    """
-    Test d0da.helper.create_packet
-    """
-    # Payload too small for first packet
-    assert list(d0da.helper.create_packets(b"\x01\x02\x03\x04\x05\x06\x07", 8, 4)) == [
-        b"\x01\x02\x03\x04\x05\x06\x07\x00",
-        b"\x00\x00\x00\x00\x00\x00\x00\x00",
-        b"\x00\x00\x00\x00\x00\x00\x00\x00",
-        b"\x00\x00\x00\x00\x00\x00\x00\x00",
-    ]
-    # Payload too large for first packet
-    assert list(
-        d0da.helper.create_packets(b"\x01\x02\x03\x04\x05\x06\x07\x08\x09", 8, 4)
-    ) == [
-        b"\x01\x02\x03\x04\x05\x06\x07\x08",
-        b"\x09\x00\x00\x00\x00\x00\x00\x00",
-        b"\x00\x00\x00\x00\x00\x00\x00\x00",
-        b"\x00\x00\x00\x00\x00\x00\x00\x00",
-    ]
-    # Payload fits exactly
-    assert list(
-        d0da.helper.create_packets(
-            b"\x00\x01\x02\x03\x04\x05\x06\x07" b"\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f",
-            8,
-            2,
-        )
-    ) == [
-        b"\x00\x01\x02\x03\x04\x05\x06\x07",
-        b"\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f",
-    ]
+import libwootility.helper
 
 
 @pytest.mark.parametrize(
@@ -50,9 +17,11 @@ def test_create_packets():
 )
 def test_one_is_more_encode(test_input, expected):
     """
-    Test d0da.helper.one_is_more_encode
+    Test libwootility.helper.one_is_more_encode
     """
-    actual = d0da.helper.one_is_more_encode((int(test_input.replace(" ", ""), 2),))
+    actual = libwootility.helper.one_is_more_encode(
+        (int(test_input.replace(" ", ""), 2),)
+    )
     assert bin(int(actual.hex(), 16)) == f"0b{expected.replace(' ', '')}"
 
 
@@ -67,9 +36,9 @@ def test_one_is_more_encode(test_input, expected):
 )
 def test_encode_color(test_input, expected):
     """
-    Test d0da.helper.encode_color
+    Test libwootility.helper.encode_color
     """
-    actual = d0da.helper.encode_color(*test_input)
+    actual = libwootility.helper.encode_color(*test_input)
     assert bin(actual) == f"0b{expected.replace(' ', '')}"
 
 
@@ -83,6 +52,8 @@ def test_encode_color(test_input, expected):
 )
 def test_encode_decode_color(rgb):
     """
-    Test d0da.helper.decode_color
+    Test libwootility.helper.decode_color
     """
-    assert d0da.helper.decode_color(d0da.helper.encode_color(*rgb)) == rgb
+    assert (
+        libwootility.helper.decode_color(libwootility.helper.encode_color(*rgb)) == rgb
+    )

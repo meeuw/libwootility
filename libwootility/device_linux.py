@@ -33,7 +33,11 @@ class Device:
 
     def send_buffer(self, payload):
         device_handle = self.devices[0]
-        device_handle.write(b"\x03" + payload)
+        for report, size in (2, 126), (3, 254), (4, 2044):
+            if len(payload) < size:
+                break
+        buf = bytes((report, )) + payload + b"\x00" * (size - len(payload))
+        device_handle.write(buf)
         device_handle.flush()
 
     def send_feature(self, payload):
